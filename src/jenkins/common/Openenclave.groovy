@@ -17,7 +17,7 @@ String dockerImage(String tag, String dockerfile = ".jenkins/Dockerfile", String
 }
 
 def ContainerRun(String imageName, String compiler, String task, String runArgs="") {
-    docker.withRegistry("oenc-jenkins.sclab.intel.com:50000") {
+    docker.withRegistry("https://oenc-jenkins.sclab.intel.com:50000") {
         def image = docker.image(imageName)
         image.pull()
         image.inside(runArgs) {
