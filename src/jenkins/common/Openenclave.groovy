@@ -22,6 +22,8 @@ def ContainerRun(String imageName, String compiler, String task, String runArgs=
         image.pull()
         image.inside(runArgs) {
             dir("${WORKSPACE}/build") {
+                sh 'pwd'
+                sh 'ls'
                 Run(compiler, task)
             }
         }
