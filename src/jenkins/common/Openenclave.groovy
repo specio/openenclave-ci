@@ -23,7 +23,8 @@ def ContainerRun(String imageName, String compiler, String task, String runArgs=
         image.inside(runArgs) {
             dir("${WORKSPACE}/build") {
                 sh 'pwd'
-                sh 'ls'
+                sh 'ls ..'
+                sh 'hostname'
                 Run(compiler, task)
             }
         }
