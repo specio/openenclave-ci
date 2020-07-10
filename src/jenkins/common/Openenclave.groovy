@@ -24,7 +24,8 @@ def ContainerRun(String imageName, String compiler, String task, String runArgs=
             dir("${WORKSPACE}/build") {
                 sh 'pwd'
                 sh 'ls ..'
-                sh 'hostname'
+                sh '../sudo scripts/ansible/install-ansible.sh'
+                sh 'ansible-playbook ../scripts/ansible/oe-contributors-setup.yml'
                 Run(compiler, task)
             }
         }
