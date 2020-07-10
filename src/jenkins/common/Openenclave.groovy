@@ -23,10 +23,7 @@ def ContainerRun(String imageName, String compiler, String task, String runArgs=
         image.inside(runArgs) {
             dir("${WORKSPACE}/build") {
                 sh 'pwd'
-                sh 'ls ..'
-                sh 'whoami'
-                sh 'apt install sudo -y'
-                sh 'sudo ../scripts/ansible/install-ansible.sh'
+                sh '../scripts/ansible/install-ansible.sh'
                 sh 'ansible-playbook ../scripts/ansible/oe-contributors-setup.yml'
                 Run(compiler, task)
             }
