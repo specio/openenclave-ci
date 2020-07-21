@@ -22,7 +22,6 @@ def ContainerRun(String imageName, String compiler, String task, String runArgs=
         image.pull()
         image.inside(runArgs) {
             dir("${WORKSPACE}/build") {
-                sh 'pwd'
                 Run(compiler, task)
             }
         }
@@ -60,7 +59,7 @@ def runTask(String task) {
                 echo "Running:     $STAGE_NAME"
                 echo "-----------------------------------------------------------------------"
                 echo "User:        \$(whoami)"
-                echo "Agent:       $NODE_NAME - Hostname( $HOSTNAME )"
+                echo "Agent:       $NODE_NAME - Hostname( \$(hostname) )"
                 echo "http_proxy:  $http_proxy"
                 echo "https_proxy: $https_proxy"
                 echo "no_proxy:    $no_proxy"
