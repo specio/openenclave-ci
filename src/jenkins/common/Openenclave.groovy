@@ -56,6 +56,15 @@ def runTask(String task) {
                 set -o errexit
                 set -o pipefail
                 source /etc/profile
+                echo "======================================================================="
+                echo "Running:     $STAGE_NAME"
+                echo "-----------------------------------------------------------------------"
+                echo "User:        \$(whoami)"
+                echo "Agent:       $NODE_NAME - Hostname( $HOSTNAME )"
+                echo "http_proxy:  $http_proxy"
+                echo "https_proxy: $https_proxy"
+                echo "no_proxy:    $no_proxy"
+                echo "======================================================================="
                 ${task}
             """
     }
